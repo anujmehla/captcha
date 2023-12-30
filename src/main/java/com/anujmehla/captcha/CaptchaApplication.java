@@ -1,17 +1,7 @@
-package com.example.captcha;
+package com.anujmehla.captcha;
 
-import cn.apiclub.captcha.Captcha;
-import cn.apiclub.captcha.backgrounds.GradiatedBackgroundProducer;
-import cn.apiclub.captcha.noise.StraightLineNoiseProducer;
-import cn.apiclub.captcha.text.producer.NumbersAnswerProducer;
-import cn.apiclub.captcha.text.renderer.DefaultWordRenderer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import javax.imageio.ImageIO;
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 @SpringBootApplication
 public class CaptchaApplication {

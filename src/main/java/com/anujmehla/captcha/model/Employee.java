@@ -1,11 +1,8 @@
-package com.example.captcha.model;
+package com.anujmehla.captcha.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Transient;
 
 @Data
 @Entity

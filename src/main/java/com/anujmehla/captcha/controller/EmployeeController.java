@@ -1,17 +1,20 @@
-package com.example.captcha.controller;
+package com.anujmehla.captcha.controller;
 
 import cn.apiclub.captcha.Captcha;
-import com.example.captcha.model.Employee;
-import com.example.captcha.service.EmployeeService;
-import com.example.captcha.util.CaptchaUtil;
+import com.anujmehla.captcha.model.Employee;
+import com.anujmehla.captcha.util.CaptchaUtil;
+import com.anujmehla.captcha.service.EmployeeService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
+//@RestController
 @RequestMapping("/employee")
 public class EmployeeController {
 
@@ -41,6 +44,7 @@ public class EmployeeController {
         e.setCaptcha(""); //user  entered value
         e.setImage(CaptchaUtil.encodeBase64(captcha));
         System.out.println("END   : SetupCaptcha() : EmployeeController");
+//        return captcha.getAnswer();
     }
 
     @Autowired
@@ -56,14 +60,24 @@ public class EmployeeController {
 
         System.out.println("END   : showReq() : EmployeeController");
         return "EmployeeRegister";
+//        return captchaValue;
     }
 
+    String json = "{\"name\":\"John\",\"salary\":30,\"captcha\":\"1\",\"hidden\":\"1\"}";
+    ObjectMapper objectMapper = new ObjectMapper();
+
+
     @PostMapping("/save")
-    public String save(@ModelAttribute Employee employee, Model model) {
+    public String save(@ModelAttribute Employee employee, Model model) throws IOException {
+//        employee = objectMapper.readValue(json,Employee.class);
+
+        System.out.println(employee.getHidden());
+        System.out.println(employee.getName());
+
         //save
         System.out.println("START : save() : EmployeeController");
         String enteredCaptcha = employee.getCaptcha();
-        String real = null;
+        String real = "";
         if (enteredCaptcha.contains(",")) {
             real = enteredCaptcha.substring(2);
         }
@@ -75,6 +89,7 @@ public class EmployeeController {
 
             service.createEmployee(employee);
             model.addAttribute("message","Employee Created");
+
             return "redirect:all";
         } else {
             System.out.println("***************Inside else Captcha didn't match");
@@ -84,7 +99,7 @@ public class EmployeeController {
         }
 
         System.out.println("END  : save() : EmployeeController");
-        return "EmployeeRegister.html";
+        return "EmployeeRegister";
     }
 
     //display all employees

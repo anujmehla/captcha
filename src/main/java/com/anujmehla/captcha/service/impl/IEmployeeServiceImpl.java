@@ -1,8 +1,8 @@
-package com.example.captcha.service.impl;
+package com.anujmehla.captcha.service.impl;
 
-import com.example.captcha.model.Employee;
-import com.example.captcha.repo.EmployeeRepository;
-import com.example.captcha.service.EmployeeService;
+import com.anujmehla.captcha.model.Employee;
+import com.anujmehla.captcha.repo.EmployeeRepository;
+import com.anujmehla.captcha.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

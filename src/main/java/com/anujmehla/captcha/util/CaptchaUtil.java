@@ -1,4 +1,4 @@
-package com.example.captcha.util;
+package com.anujmehla.captcha.util;
 
 import cn.apiclub.captcha.Captcha;
 import cn.apiclub.captcha.backgrounds.GradiatedBackgroundProducer;
